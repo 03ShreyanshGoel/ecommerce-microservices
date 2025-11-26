@@ -1,0 +1,39 @@
+# Node.js
+node_modules
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+dist
+*.tsbuildinfo
+
+# Local environment
+.env
+.env.local
+.env.*.local
+
+# Logs
+logs
+*.log
+
+# OS / Editor garbage
+.DS_Store
+Thumbs.db
+.vscode
+.idea
+*.swp
+*~
+
+# Docker
+docker-compose.override.yml
+
+# Git
+.git
+.gitignore
+
+# Build artifacts (if you ever add frontend)
+build
+public/build
+
+# Prisma generated client (we'll generate inside container)
+prisma/generated/
+src/generated/

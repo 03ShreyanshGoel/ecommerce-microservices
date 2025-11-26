@@ -1,0 +1,68 @@
+services:
+  postgres:
+    image: postgres:15
+    container_name: postgres
+    environment:
+      POSTGRES_DB: ecommerce
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: secret
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U admin -d ecommerce"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  auth-service:
+    build: ./auth-service
+    ports:
+      - "3001:3001"
+    environment:
+      - PORT=3001
+      - DATABASE_URL=postgresql://admin:secret@postgres:5432/ecommerce?schema=public
+      - JWT_SECRET=supersecretkey123
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  product-service:
+    build: ./product-service
+    ports:
+      - "3002:3002"
+    environment:
+      - PORT=3002
+      - DATABASE_URL=postgresql://admin:secret@postgres:5432/ecommerce?schema=public
+      - JWT_SECRET=supersecretkey123
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  cart-service:
+    build: ./cart-service
+    ports:
+      - "3003:3003"
+    environment:
+      - PORT=3003
+      - DATABASE_URL=postgresql://admin:secret@postgres:5432/ecommerce?schema=public
+      - JWT_SECRET=supersecretkey123
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  order-service:
+    build: ./order-service
+    ports:
+      - "3004:3004"
+    environment:
+      - PORT=3004
+      - DATABASE_URL=postgresql://admin:secret@postgres:5432/ecommerce?schema=public
+      - JWT_SECRET=supersecretkey123
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+volumes:
+  postgres_data:
