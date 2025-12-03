@@ -1,7 +1,7 @@
 # render.yaml — FINAL VERSION FOR YOUR PROJECT
 services:
   # PostgreSQL (Render free tier)
-  - type: pgsql
+  - type: postgresql
     name: postgres
     plan: free
     region: oregon
