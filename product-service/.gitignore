@@ -1,13 +1,51 @@
-node_modules
-# Keep environment variables out of version control
+# Node
+node_modules/
+dist/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment variables
 .env
+.env.local
+.env.development
+.env.production
 
-/src/generated/prisma
+# Docker
+docker-compose.override.yml
 
+# Prisma
+prisma/dev.db
+prisma/*.db
+generated/
 
-# eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsInJvbGUiOiJDVVNUT01FUiIsImlhdCI6MTc2MzM1MDEwNiwiZXhwIjoxNzYzOTU0OTA2fQ.Vi5s0k4MgAzerVyJTTx8ZT7u2Wl4YIU8vwPmyj1bOlw
+# Logs
+logs/
+*.log
 
+# OS
+.DS_Store
+Thumbs.db
 
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
 
+# Render / Railway / Fly.io local files
+.render/
+.railway/
+.fly/
 
+# Build artifacts
+**/build/
+**/dist/
 
+# Local testing
+test/
+coverage/
+
+# NGINX config — we DO want to commit this (it's not secret)
+# !nginx/nginx.conf
+# !nginx/Dockerfile
