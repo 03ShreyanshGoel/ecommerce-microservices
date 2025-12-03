@@ -8,13 +8,11 @@ WORKDIR /app
 COPY package*.json ./
 RUN npm install
 
-# Prisma fix for Alpine
 COPY prisma ./prisma
 RUN npx prisma generate
 
 COPY . .
 
-# DO NOT hardcode port here → use environment variable
 EXPOSE ${PORT}
 
-CMD ["npm", "run", "dev"]
+CMD ["sh", "-c", "npx prisma db push && npm run dev"]

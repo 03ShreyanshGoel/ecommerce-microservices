@@ -7,7 +7,8 @@ const app = express();
 app.use(express.json());
 
 // ONLY auth routes
-app.use('/api/auth', authRoutes);
+// app.use('/api/auth', authRoutes);
+app.use('/', authRoutes);
 
 app.get('/', (_, res) => res.json({ message: 'Auth Service Running' }));
 

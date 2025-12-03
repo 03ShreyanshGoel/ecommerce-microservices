@@ -20,7 +20,8 @@
     "express": "^5.1.0",
     "jsonwebtoken": "^9.0.2",
     "nodemailer": "^7.0.10",
-    "prisma": "^6.19.0"
+    "prisma": "^6.19.0",
+    "redis": "^5.10.0"
   },
   "devDependencies": {
     "@types/bcrypt": "^6.0.0",

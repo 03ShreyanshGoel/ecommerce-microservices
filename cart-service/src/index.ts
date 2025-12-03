@@ -8,7 +8,8 @@ const app = express();
 app.use(express.json());
 
 app.use(protect);                    // All cart routes need login
-app.use('/api/cart', cartRoutes);
+// app.use('/api/cart', cartRoutes);
+app.use('/', cartRoutes);
 
 app.get('/', (_, res) => res.json({ message: 'Cart Service Running' }));
 

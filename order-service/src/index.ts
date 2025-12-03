@@ -9,8 +9,10 @@ const app = express();
 app.use(express.json());
 
 app.use(protect);           // All routes need login
-app.use('/api/orders', orderRoutes);
-app.use('/api/payments', paymentRoutes);
+// app.use('/api/orders', orderRoutes);
+app.use('/', orderRoutes);
+// app.use('/api/payments', paymentRoutes);
+app.use('/', paymentRoutes);
 
 app.get('/', (_, res) => res.json({ message: 'Order + Payment Service Running' }));
 
